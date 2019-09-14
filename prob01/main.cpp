@@ -8,7 +8,7 @@ int main()
   // then print both the char and the short
 
   char my_char1 = 'J';
-  short my_short1 = ;
+  short my_short1 = static_cast<short>(my_char1);
   std::cout << "The ASCII value for " << my_char1 << " is " << my_short1 << std::endl;
 
   std::cout << std::endl; // blank line to separate output from the different exercises
@@ -16,7 +16,7 @@ int main()
   // TODO#2: add one to the character to see what gets printed out
 
   char my_char2 = 'C';
-  my_char2 = ;
+  my_char2 = my_char2 + 1;
   std::cout << "Char1: " << my_char2 << std::endl;
 
   std::cout << std::endl; // blank line to separate output from the different exercises
@@ -26,8 +26,10 @@ int main()
   // longer alphabetic
 
   char my_char3 = 'z';
-  my_char3 = ;
-  std::cout << "Char2: " << my_char3 << std::endl;
+  my_char3 = my_char3 + 1 ;
+  std::cout << "Char2: " << my_char3 << std::endl; // The value of the character is no longer alphabetic because
+  // z is the last leter in the alphabet so the program looks for new symbols to compensate for the additonal character
+
 
   std::cout << std::endl; // blank line to separate output from the different exercises
 
@@ -42,13 +44,13 @@ int main()
 
   std::cout << "Short (" << sizeof(my_short2) << " bytes): "
     << std::dec << my_short2 << std::hex << " (0x" << my_short2 << ')';
-  my_short2 = ;
+  my_short2 = my_short2 + 1; //my_short2 became negative because the addition of 1 overflowed the maximum range of short which is 32767
   std::cout << ", after adding 1: " << std::dec << my_short2
     << std::hex << " (0x" << my_short2 << ")\n";
 
   std::cout << "Int (" << sizeof(my_short2) << " bytes): "
     << std::dec << my_int2 << std::hex << " (0x" << my_int2 << ')';
-  my_int2 = ;
+  my_int2 = my_int2 + 1; //my_int2 remained positive because the data type "int" has a bigger range to compensate for the additional 1 added
   std::cout << ", after adding 1: " << std::dec << my_int2
     << std::hex << " (0x" << my_int2 << ")\n";
 
@@ -63,13 +65,13 @@ int main()
 
   std::cout << "Unsigned short (" << sizeof(my_short3) << " bytes): "
     << std::dec << my_short3 << std::hex << " (0x" << my_short3 << ')';
-  my_short3 = ;
+  my_short3 = my_short3 + 1; // adding 1 to my_short3 overflowed the intiger back to 0 due to the minimum range being 0
   std::cout << ", after adding 1: " << std::dec << my_short3
     << std::hex << " (0x" << my_short3 << ")\n";
 
   std::cout << "Same value as int (" << sizeof(my_int3) << " bytes): "
     << std::dec << my_int3 << std::hex << " (0x" << my_int3 << ')';
-  my_int3 = ;
+  my_int3 = my_int3 + 1; // Because my_int3 has the same value as my_short3 it did not overflow with the additonal 1 due to int have a bigger range
   std::cout << ", after adding 1: " << std::dec << my_int3
     << std::hex << " (0x" << my_int3 << ")\n";
 
